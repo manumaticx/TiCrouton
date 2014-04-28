@@ -3,6 +3,8 @@
 ## About
 TiCrouton is a Titanium module for [Crouton](https://github.com/keyboardsurfer/Crouton) - a replacement for Android Toast notifications.
 
+![demo](http://s20.postimg.org/m3l53940d/ticrouton.gif)
+
 Check out the demo from the original library:
 
 [![demo](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)](http://play.google.com/store/apps/details?id=de.keyboardsurfer.app.demo.crouton)
