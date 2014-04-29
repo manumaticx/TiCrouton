@@ -16,6 +16,10 @@
 
 package de.manumaticx.crouton;
 
+import org.appcelerator.kroll.KrollDict;
+import org.appcelerator.kroll.KrollProxy;
+import org.appcelerator.kroll.annotations.Kroll;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -49,7 +53,8 @@ import android.widget.TextView;
  * Call {@link Crouton#clearCroutonsForActivity(Activity)} within
  * {@link android.app.Activity#onDestroy()} to avoid {@link Context} leaks.
  */
-public final class Crouton {
+@Kroll.proxy
+public final class Crouton extends KrollProxy {
   private static final String NULL_PARAMETERS_ARE_NOT_ACCEPTED = "Null parameters are not accepted";
   private static final int IMAGE_ID = 0x100;
   private static final int TEXT_ID = 0x101;
@@ -79,6 +84,7 @@ public final class Crouton {
    *     The style that this {@link Crouton} should be created with.
    */
   private Crouton(Activity activity, CharSequence text, Style style) {
+	super();
     if ((activity == null) || (text == null) || (style == null)) {
       throw new IllegalArgumentException(NULL_PARAMETERS_ARE_NOT_ACCEPTED);
     }
@@ -103,7 +109,8 @@ public final class Crouton {
    *     The {@link ViewGroup} that this {@link Crouton} should be added to.
    */
   private Crouton(Activity activity, CharSequence text, Style style, ViewGroup viewGroup) {
-    if ((activity == null) || (text == null) || (style == null)) {
+	super();
+	if ((activity == null) || (text == null) || (style == null)) {
       throw new IllegalArgumentException(NULL_PARAMETERS_ARE_NOT_ACCEPTED);
     }
 
@@ -124,6 +131,7 @@ public final class Crouton {
    *     The custom {@link View} to display
    */
   private Crouton(Activity activity, View customView) {
+	super();
     if ((activity == null) || (customView == null)) {
       throw new IllegalArgumentException(NULL_PARAMETERS_ARE_NOT_ACCEPTED);
     }
@@ -163,6 +171,7 @@ public final class Crouton {
    */
   private Crouton(final Activity activity, final View customView, final ViewGroup viewGroup,
                   final Configuration configuration) {
+	super();
     if ((activity == null) || (customView == null)) {
       throw new IllegalArgumentException(NULL_PARAMETERS_ARE_NOT_ACCEPTED);
     }
@@ -173,6 +182,12 @@ public final class Crouton {
     this.style = new Style.Builder().build();
     this.text = null;
     this.configuration = configuration;
+  }
+  
+  @Override
+  public void handleCreationDict(KrollDict options)
+  {
+	super.handleCreationDict(options);
   }
 
   /**
@@ -558,6 +573,7 @@ public final class Crouton {
   /**
    * Cancels a {@link Crouton} immediately.
    */
+  @Kroll.method
   public void cancel() {
     Manager manager = Manager.getInstance();
     manager.removeCroutonImmediately(this);
@@ -567,6 +583,7 @@ public final class Crouton {
    * Displays the {@link Crouton}. If there's another {@link Crouton} visible at
    * the time, this {@link Crouton} will be displayed afterwards.
    */
+  @Kroll.method
   public void show() {
     Manager.getInstance().add(this);
   }
@@ -609,6 +626,7 @@ public final class Crouton {
    *
    * @since 1.9
    */
+  @Kroll.method
   public void hide() {
     Manager.getInstance().removeCrouton(this);
   }
@@ -747,7 +765,7 @@ public final class Crouton {
   /**
    * @return the activity
    */
-  Activity getActivity() {
+  public Activity getActivity() {
     return activity;
   }
 

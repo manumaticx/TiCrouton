@@ -21,8 +21,17 @@ var button_alert = Ti.UI.createButton({
     title: 'ALERT'
 });
 button_alert.addEventListener('click', function(){
-    // show a Crouton and forget about it
-    Crouton.showText("This is a Crouton with built-in ALERT style", Crouton.STYLE_ALERT);
+    
+    // create a Crouton and keep a reference
+    var crouton = Crouton.makeText("This is a Crouton with built-in ALERT style", Crouton.STYLE_ALERT);
+    
+    // show it
+    crouton.show();
+    
+    // hide it after 1 sec
+    setTimeout(function(){
+        crouton.hide();
+    }, 1000);
 });
 win.add(button_alert);
 
@@ -30,8 +39,16 @@ var button_confirm = Ti.UI.createButton({
     title: 'CONFIRM'
 });
 button_confirm.addEventListener('click', function(){
-    // show a Crouton and forget about it
-    Crouton.showText("This is a Crouton with built-in CONFIRM style", Crouton.STYLE_CONFIRM);
+    
+    // create a Crouton and keep a reference
+    var confirm = Crouton.make({
+        text: "This is a Crouton with built-in CONFIRM style",
+        style: Crouton.STYLE_CONFIRM,
+        duration: 5000 // 5 sec.
+    });
+    
+    // show it when you're ready
+    confirm.show();
 });
 win.add(button_confirm);
 

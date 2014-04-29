@@ -22,31 +22,58 @@ Crouton.showText("Whooop!", Crouton.STYLE_INFO);
 
 // OR
 
-Crouton.show({
-	text: "An error occured. Please try again.",
-	style: Crouton.STYLE_ALERT,
-	duration: 5000 // 5 seconds
-});
+var crouton = Crouton.makeText("An error occured. Please try again.", Crouton.STYLE_ALERT);
+crouton.show();
 ```
+There are some more examples in the [example](../example/app.js).
 
-### Methods
+## API
 
-#### _.showText( text , style)_
+### Module
+
+`.showText( text , style )`
 * __text__: String
 * __style__: int (one of _Crouton.STYLE_INFO_, _Crouton.STYLE_ALERT_, _Crouton.STYLE_CONFIRM_)
 
-#### _.show( options)_
+`.show( options)`
 * __options__: Object
 	* text
 	* style
 	* duration (as ms)
 
+`.makeText( text , style )`
+* __text__: String
+* __style__: int (one of _Crouton.STYLE_INFO_, _Crouton.STYLE_ALERT_, _Crouton.STYLE_CONFIRM_)
+
+_returns [Crouton](###Crouton)_
+
+`.make( options )`
+* __options__: Object
+	* text
+	* style
+	* duration (as ms)
+
+_returns [Crouton](###Crouton)_
+
+`.hide( crouton )` hides a Crouton by reference
+* __crouton__: [Crouton](###Crouton)
+
+`.cancelAllCroutons( )` cancels all pending Croutons
+
+
+### Crouton
+
+* `.show( )` shows the Crouton
+* `.hide( )` hides the Crouton
+* `.cancel( )` cancels the Crouton
+
 ## TODO
 
-* implement a Crouton Proxy
-* implement __make__ ans __makeText__ methods (same as _show_ and _showText_ but returns a reference to a Crouton Proxy, so you can add EventListeners or call _.hide()_ on a Crouton )
-* implement __cancelAllCroutons__ and __hide__ methods
-* support for __customStyle__ and __customView__
+* ~~implement a Crouton Proxy~~
+* ~~implement __make__ ans __makeText__ methods~~
+* ~~implement __cancelAllCroutons__ and __hide__ methods~~
+* implement Events
+* add support for __customStyle__ and __customView__
 
 ## License
 	The MIT License (MIT)
