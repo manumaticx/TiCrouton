@@ -47,7 +47,7 @@ There are some more examples in the [example](example/app.js).
 * __text__: String
 * __style__: int (one of _Crouton.STYLE_INFO_, _Crouton.STYLE_ALERT_, _Crouton.STYLE_CONFIRM_)
 
- _returns [Crouton](###Crouton)_
+ _returns [Crouton](#crouton)_
 
 `.make( options )`
 * __options__: Object
@@ -55,10 +55,10 @@ There are some more examples in the [example](example/app.js).
 	* style
 	* duration (as ms)
 
- _returns [Crouton](###Crouton)_
+ _returns [Crouton](#crouton)_
 
 `.hide( crouton )` hides a Crouton by reference
-* __crouton__: [Crouton](###Crouton)
+* __crouton__: [Crouton](#crouton)
 
 `.cancelAllCroutons( )` cancels all pending Croutons
 
