@@ -13,7 +13,7 @@ var button_info = Ti.UI.createButton({
 });
 button_info.addEventListener('click', function(){
     // show a Crouton and forget about it
-    Crouton.showText("This is a Crouton with built-in INFO style", Crouton.STYLE_INFO);
+    Crouton.info("This is a simple info Crouton");
 });
 win.add(button_info);
 

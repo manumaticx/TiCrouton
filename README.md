@@ -3,7 +3,7 @@
 ## About
 TiCrouton is a Titanium module for [Crouton](https://github.com/keyboardsurfer/Crouton) - a replacement for Android Toast notifications.
 
-![demo](http://s20.postimg.org/m3l53940d/ticrouton.gif)
+![demo](documentation/ticrouton.gif)
 
 Check out the demo from the original library:
 
@@ -20,18 +20,30 @@ Download the latest distribution ZIP-file and consult the [Titanium Documentatio
 ```javascript
 var Crouton = require('de.manumaticx.crouton');
 
-Crouton.showText("Whooop!", Crouton.STYLE_INFO);
+// simple alert
+Crouton.alert("Something went wrong! :-(");
 
-// OR
+// simple confirm
+Crouton.confirm("Something was successful! :-)");
 
-var crouton = Crouton.makeText("An error occured. Please try again.", Crouton.STYLE_ALERT);
-crouton.show();
+// simple info
+Crouton.info("Something I want to let you know.");
+
 ```
 There are some more examples in the [example](example/app.js).
 
 ## API
 
 ### Module
+
+`.alert( text )`
+* __text__: String
+
+`.confirm( text )`
+* __text__: String
+
+`.info( text )`
+* __text__: String
 
 `.showText( text , style )`
 * __text__: String

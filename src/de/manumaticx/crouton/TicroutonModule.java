@@ -154,6 +154,24 @@ public class TicroutonModule extends KrollModule
 		Crouton.cancelAllCroutons();
 	}
 	
+	@Kroll.method
+	public void alert(String text)
+	{
+		showText(text, STYLE_ALERT);
+	}
+	
+	@Kroll.method
+	public void confirm(String text)
+	{
+		showText(text, STYLE_CONFIRM);
+	}
+	
+	@Kroll.method
+	public void info(String text)
+	{
+		showText(text, STYLE_INFO);
+	}
+	
 	/**
 	 * returns a Style for the int constant
 	 * @param code
