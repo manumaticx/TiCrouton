@@ -1,1 +1,13 @@
-Place your change log text here.  This file will be incorporated with your app at package time.
+1.2.1
+- activity property for show and make to bind crouton to an activity
+
+1.2
+- new methods: confirm, alert, info for easier use
+
+1.1
+- implemented Crouton Proxy
+- show, hide and cancel methods for Crouton
+- new Module methods: make, makeText, hide, cancelAllCroutons
+
+1.0
+- Initial release

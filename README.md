@@ -54,6 +54,7 @@ There are some more examples in the [example](example/app.js).
 	* text
 	* style
 	* duration (as ms)
+	* activity
 
 `.makeText( text , style )`
 * __text__: String
@@ -66,6 +67,7 @@ There are some more examples in the [example](example/app.js).
 	* text
 	* style
 	* duration (as ms)
+	* activity
 
  _returns [Crouton](#crouton)_
 

@@ -7,6 +7,9 @@ import org.appcelerator.kroll.common.Log;
 import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.TiC;
 import org.appcelerator.titanium.util.TiConvert;
+import org.appcelerator.titanium.proxy.ActivityProxy;
+
+import android.app.Activity;
 
 import de.manumaticx.crouton.Configuration.Builder;
 
@@ -55,10 +58,17 @@ public class TicroutonModule extends KrollModule
 		
 		Crouton crouton;
 		
+		Activity activity;
 		String text = "";
 		Style style = Style.INFO;
 		Builder config = new Configuration.Builder();
 		
+		if (args.containsKey(TiC.PROPERTY_ACTIVITY)){
+			ActivityProxy activityProxy = (ActivityProxy) args.get(TiC.PROPERTY_ACTIVITY);
+			activity = activityProxy.getActivity();
+        }else{
+        	activity = TiApplication.getInstance().getCurrentActivity();
+        }
 		
 		if (args.containsKey(TiC.PROPERTY_TEXT)){
             text = TiConvert.toString(args.get(TiC.PROPERTY_TEXT));
@@ -68,36 +78,12 @@ public class TicroutonModule extends KrollModule
             style = getStyle(TiConvert.toInt(args.get(TiC.PROPERTY_STYLE)));
         }
 		
-		crouton = Crouton.makeText(TiApplication.getInstance().getCurrentActivity(), text, style);
+		crouton = Crouton.makeText(activity, text, style);
 		
 		if (args.containsKey(TiC.PROPERTY_DURATION)){
 			config.setDuration(TiConvert.toInt(args.get(TiC.PROPERTY_DURATION)));
 			crouton.setConfiguration(config.build());
 		}
-		
-		/*
-		if (args.containsKey("infinite") && args.getBoolean("infinite")){
-			
-			infiniteCrouton = crouton;
-			config.setDuration(Configuration.DURATION_INFINITE);
-			
-			crouton
-			.setOnClickListener(new View.OnClickListener() {
-				
-				@Override
-				public void onClick(View view) {
-					TiApplication.getInstance().getCurrentActivity().runOnUiThread(new Runnable() {
-	        			@Override
-	        			public void run() {
-	        				Crouton.hide(infiniteCrouton);
-	        			}
-	        		});
-				}
-			})
-			.setConfiguration(config.build());
-			
-		}
-		*/
 		
 		crouton.show();
 		
@@ -118,10 +104,17 @@ public class TicroutonModule extends KrollModule
 		
 		Crouton crouton;
 		
+		Activity activity;
 		String text = "";
 		Style style = Style.INFO;
 		Builder config = new Configuration.Builder();
 		
+		if (args.containsKey(TiC.PROPERTY_ACTIVITY)){
+			ActivityProxy activityProxy = (ActivityProxy) args.get(TiC.PROPERTY_ACTIVITY);
+			activity = activityProxy.getActivity();
+        }else{
+        	activity = TiApplication.getInstance().getCurrentActivity();
+        }
 		
 		if (args.containsKey(TiC.PROPERTY_TEXT)){
             text = TiConvert.toString(args.get(TiC.PROPERTY_TEXT));
@@ -131,7 +124,7 @@ public class TicroutonModule extends KrollModule
             style = getStyle(TiConvert.toInt(args.get(TiC.PROPERTY_STYLE)));
         }
 		
-		crouton = Crouton.makeText(TiApplication.getInstance().getCurrentActivity(), text, style);
+		crouton = Crouton.makeText(activity, text, style);
 		
 		if (args.containsKey(TiC.PROPERTY_DURATION)){
 			config.setDuration(TiConvert.toInt(args.get(TiC.PROPERTY_DURATION)));
