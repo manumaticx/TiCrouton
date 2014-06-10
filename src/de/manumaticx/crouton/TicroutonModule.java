@@ -7,6 +7,7 @@ import org.appcelerator.kroll.common.Log;
 import org.appcelerator.titanium.TiApplication;
 import org.appcelerator.titanium.TiC;
 import org.appcelerator.titanium.util.TiConvert;
+import org.appcelerator.titanium.util.TiUIHelper;
 import org.appcelerator.titanium.proxy.ActivityProxy;
 
 import android.app.Activity;
@@ -44,11 +45,16 @@ public class TicroutonModule extends KrollModule
 	
 	// Methods
 	@Kroll.method
-	public void showText(String text, int style)
+	public void showText(final String text, final int style)
 	{
 		Log.d(TAG, "showText called");
+		TiUIHelper.runUiDelayedIfBlock(new Runnable() {
+  			@Override
+  			public void run() {
+  				Crouton.showText(TiApplication.getInstance().getCurrentActivity(), text, getStyle(style));
+  			}
+  		});
 		
-		Crouton.showText(TiApplication.getInstance().getCurrentActivity(), text, getStyle(style));
 	}
 	
 	@Kroll.method
@@ -56,7 +62,7 @@ public class TicroutonModule extends KrollModule
 	{
 		Log.d(TAG, "show called");
 		
-		Crouton crouton;
+		final Crouton crouton;
 		
 		Activity activity;
 		String text = "";
@@ -85,7 +91,12 @@ public class TicroutonModule extends KrollModule
 			crouton.setConfiguration(config.build());
 		}
 		
-		crouton.show();
+		TiUIHelper.runUiDelayedIfBlock(new Runnable() {
+  			@Override
+  			public void run() {
+  				crouton.show();
+  			}
+  		});
 		
 	}
 	

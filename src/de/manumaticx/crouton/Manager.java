@@ -37,6 +37,8 @@ import java.util.Iterator;
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+import org.appcelerator.titanium.util.TiUIHelper;
+
 
 /**
 * Manages the lifecycle of {@link Crouton}s.
@@ -213,19 +215,8 @@ final class Manager extends Handler {
           return;
         }
         handleTranslucentActionBar((ViewGroup.MarginLayoutParams) params, activity);
-
-        if (Looper.myLooper() == Looper.getMainLooper()) {
-        	activity.addContentView(croutonView, params);
-        }else {
-        	final Activity mActivity = activity;
-        	final ViewGroup.LayoutParams mParams = params;
-        	activity.runOnUiThread(new Runnable() {
-      			@Override
-      			public void run() {
-      				mActivity.addContentView(croutonView, mParams);
-      			}
-      		});
-        }
+        
+        activity.addContentView(croutonView, params);
       }
     }
 
@@ -233,7 +224,8 @@ final class Manager extends Handler {
     ViewTreeObserver observer = croutonView.getViewTreeObserver();
     if (null != observer) {
       observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-        @Override
+        @SuppressWarnings("deprecation")
+		@Override
         @TargetApi(16)
         public void onGlobalLayout() {
           if (Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN) {
