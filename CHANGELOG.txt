@@ -1,3 +1,6 @@
+1.2.2
+- fixed a bug where lined up croutons didn't show up
+
 1.2.1
 - activity property for show and make to bind crouton to an activity
 
