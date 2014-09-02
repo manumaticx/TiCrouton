@@ -1,3 +1,7 @@
+1.2.3
+- introduced Crouton events: show, finish
+- replaced runOnUiThread with runUiDelayedIfBlock
+
 1.2.2
 - fixed a bug where lined up croutons didn't show up
 
