@@ -16,13 +16,18 @@
 
 package de.manumaticx.crouton;
 
+import java.util.Iterator;
+import java.util.Queue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+import org.appcelerator.titanium.util.TiUIHelper;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.view.View;
@@ -33,11 +38,6 @@ import android.view.WindowManager;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityManager;
 import android.widget.FrameLayout;
-import java.util.Iterator;
-import java.util.Queue;
-import java.util.concurrent.LinkedBlockingQueue;
-
-import org.appcelerator.titanium.util.TiUIHelper;
 
 
 /**
@@ -277,56 +277,36 @@ final class Manager extends Handler {
     View croutonView = crouton.getView();
     ViewGroup croutonParentView = (ViewGroup) croutonView.getParent();
 
-    if (null != croutonParentView) {
-  	   if (Looper.myLooper() == Looper.getMainLooper()) {
+	if (null != croutonParentView) {
+		final View mCroutonView = croutonView;
+		final ViewGroup mCroutonParentView = croutonParentView;
+		final Crouton mCrouton = crouton;
+		TiUIHelper.runUiDelayedIfBlock(new Runnable() {
+			@Override
+			public void run() {
+				mCroutonView.startAnimation(mCrouton.getOutAnimation());
+				// Remove the Crouton from the queue.
+				Crouton removed = croutonQueue.poll();
 
-  	    croutonView.startAnimation(crouton.getOutAnimation());
-        // Remove the Crouton from the queue.
-        Crouton removed = croutonQueue.poll();
+				// Remove the crouton from the view's parent.
+				mCroutonParentView.removeView(mCroutonView);
+				if (null != removed) {
+					removed.detachActivity();
+					removed.detachViewGroup();
+					if (null != removed.getLifecycleCallback()) {
+						removed.getLifecycleCallback().onRemoved();
+					}
+					removed.detachLifecycleCallback();
+				}
 
-        // Remove the crouton from the view's parent.
-        croutonParentView.removeView(croutonView);
-        if (null != removed) {
-          removed.detachActivity();
-          removed.detachViewGroup();
-          if (null != removed.getLifecycleCallback()) {
-            removed.getLifecycleCallback().onRemoved();
-          }
-          removed.detachLifecycleCallback();
-        }
-
-        // Send a message to display the next crouton but delay it by the out
-        // animation duration to make sure it finishes
-        sendMessageDelayed(crouton, Messages.DISPLAY_CROUTON, crouton.getOutAnimation().getDuration());
-      }else {
-      	final View mCroutonView = croutonView;
-      	final ViewGroup mCroutonParentView = croutonParentView;
-      	final Crouton mCrouton = crouton;
-      	crouton.getActivity().runOnUiThread(new Runnable() {
-      		@Override
-      		public void run() {
-      			mCroutonView.startAnimation(mCrouton.getOutAnimation());
-      			// Remove the Crouton from the queue.
-  		      Crouton removed = croutonQueue.poll();
-
-  		      // Remove the crouton from the view's parent.
-  		      mCroutonParentView.removeView(mCroutonView);
-  		      if (null != removed) {
-  		        removed.detachActivity();
-  		        removed.detachViewGroup();
-  		        if (null != removed.getLifecycleCallback()) {
-  		          removed.getLifecycleCallback().onRemoved();
-  		        }
-  		        removed.detachLifecycleCallback();
-  		      }
-
-  		      // Send a message to display the next crouton but delay it by the out
-  		      // animation duration to make sure it finishes
-  		      sendMessageDelayed(mCrouton, Messages.DISPLAY_CROUTON, mCrouton.getOutAnimation().getDuration());
-      		}
-      	});
-      }
-    }
+				// Send a message to display the next crouton but delay it
+				// by the out
+				// animation duration to make sure it finishes
+				sendMessageDelayed(mCrouton, Messages.DISPLAY_CROUTON,
+						mCrouton.getOutAnimation().getDuration());
+			}
+		});
+	}
   }
 
   /**
