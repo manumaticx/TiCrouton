@@ -218,6 +218,8 @@ final class Manager extends Handler {
         
         activity.addContentView(croutonView, params);
       }
+      
+      crouton.fireEvent("show");
     }
 
     croutonView.requestLayout(); // This is needed so the animation can use the measured with/height
@@ -297,6 +299,7 @@ final class Manager extends Handler {
 						removed.getLifecycleCallback().onRemoved();
 					}
 					removed.detachLifecycleCallback();
+					removed.fireEvent("finish");
 				}
 
 				// Send a message to display the next crouton but delay it

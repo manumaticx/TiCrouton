@@ -79,16 +79,23 @@ There are some more examples in the [example](example/app.js).
 
 ### Crouton
 
+##### Methods
+
 * `.show( )` shows the Crouton
 * `.hide( )` hides the Crouton
 * `.cancel( )` cancels the Crouton
+
+##### Events
+
+* `show` gets fired when the Crouton shows
+* `finish` gets fired when the Crouton hides
 
 ## TODO
 
 * ~~implement a Crouton Proxy~~
 * ~~implement __make__ ans __makeText__ methods~~
 * ~~implement __cancelAllCroutons__ and __hide__ methods~~
-* implement Events
+* ~~implement Events~~
 * add support for __customStyle__ and __customView__
 
 ## License

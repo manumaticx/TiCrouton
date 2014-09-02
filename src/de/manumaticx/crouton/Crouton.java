@@ -799,6 +799,12 @@ public final class Crouton extends KrollProxy {
 
     return croutonView;
   }
+  
+  public void fireEvent(String event) {
+	if (hasListeners(event)) {
+		fireEvent(event, null);
+	}
+  }
 
   private void measureCroutonView() {
     View view = getView();
