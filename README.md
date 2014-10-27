@@ -1,11 +1,13 @@
-# TiCrouton [![Build Status](https://travis-ci.org/manumaticx/TiCrouton.svg)](https://travis-ci.org/manumaticx/TiCrouton) [![gittio](http://img.shields.io/badge/gittio-1.2.3-00B4CC.svg)](http://gitt.io/component/de.manumaticx.crouton)
+# TiCrouton [![Titanium](http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png)](http://www.appcelerator.com/titanium/)
 
 ## About
 TiCrouton is a Titanium module for [Crouton](https://github.com/keyboardsurfer/Crouton) - a replacement for Android Toast notifications.
 
-[![Titanium](http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png)](http://www.appcelerator.com/titanium/)
-
 ![demo](documentation/ticrouton.gif)
+
+Check out the demo from the original library:
+
+[![demo](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)](http://play.google.com/store/apps/details?id=de.keyboardsurfer.app.demo.crouton)
 
 ## Quick Start
 
