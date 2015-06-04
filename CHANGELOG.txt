@@ -1,3 +1,6 @@
+1.2.4
+- new option: color
+
 1.2.3
 - introduced Crouton events: show, finish
 - replaced runOnUiThread with runUiDelayedIfBlock

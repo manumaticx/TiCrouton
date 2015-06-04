@@ -3,10 +3,6 @@
 ## About
 TiCrouton is a Titanium module for [Crouton](https://github.com/keyboardsurfer/Crouton) - a replacement for Android Toast notifications.
 
-Check out the demo from the original library:
-
-[![demo](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)]((http://play.google.com/store/apps/details?id=de.keyboardsurfer.app.demo.crouton)
-
 ## Quick Start
 
 ### Installation [![gitTio](http://gitt.io/badge.png)](http://gitt.io/component/de.manumaticx.crouton)
@@ -39,6 +35,7 @@ There are some more examples in the [example](../example/app.js).
 * __options__: Object
 	* text
 	* style
+	* color
 	* duration (as ms)
 
 `.makeText( text , style )`
@@ -51,6 +48,7 @@ _returns [Crouton](#crouton)_
 * __options__: Object
 	* text
 	* style
+	* color
 	* duration (as ms)
 
 _returns [Crouton](#crouton)_
@@ -73,7 +71,7 @@ _returns [Crouton](#crouton)_
 * ~~implement __make__ ans __makeText__ methods~~
 * ~~implement __cancelAllCroutons__ and __hide__ methods~~
 * implement Events
-* add support for __customStyle__ and __customView__
+* add support for ~~__customStyle__~~ and __customView__
 
 ## License
 	The MIT License (MIT)

@@ -66,7 +66,7 @@ public class TicroutonModule extends KrollModule
 		
 		Activity activity;
 		String text = "";
-		Style style = Style.INFO;
+		Style style = null;
 		Builder config = new Configuration.Builder();
 		
 		if (args.containsKey(TiC.PROPERTY_ACTIVITY)){
@@ -83,6 +83,19 @@ public class TicroutonModule extends KrollModule
 		if (args.containsKey(TiC.PROPERTY_STYLE)){
             style = getStyle(TiConvert.toInt(args.get(TiC.PROPERTY_STYLE)));
         }
+		
+		if (args.containsKey(TiC.PROPERTY_COLOR)){
+			
+			String color = (String) args.get(TiC.PROPERTY_COLOR);
+			
+			style = new Style.Builder()
+				.setBackgroundColorValue(TiConvert.toColor(color))
+				.build();
+		}
+		
+		if (style == null){
+			style = Style.INFO;
+		}
 		
 		crouton = Crouton.makeText(activity, text, style);
 		
@@ -117,7 +130,7 @@ public class TicroutonModule extends KrollModule
 		
 		Activity activity;
 		String text = "";
-		Style style = Style.INFO;
+		Style style = null;
 		Builder config = new Configuration.Builder();
 		
 		if (args.containsKey(TiC.PROPERTY_ACTIVITY)){
@@ -134,6 +147,19 @@ public class TicroutonModule extends KrollModule
 		if (args.containsKey(TiC.PROPERTY_STYLE)){
             style = getStyle(TiConvert.toInt(args.get(TiC.PROPERTY_STYLE)));
         }
+		
+		if (args.containsKey(TiC.PROPERTY_COLOR)){
+			
+			String color = (String) args.get(TiC.PROPERTY_COLOR);
+			
+			style = new Style.Builder()
+				.setBackgroundColorValue(TiConvert.toColor(color))
+				.build();
+		}
+		
+		if (style == null){
+			style = Style.INFO;
+		}
 		
 		crouton = Crouton.makeText(activity, text, style);
 		

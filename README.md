@@ -5,10 +5,6 @@ TiCrouton is a Titanium module for [Crouton](https://github.com/keyboardsurfer/C
 
 ![demo](documentation/ticrouton.gif)
 
-Check out the demo from the original library:
-
-[![demo](http://developer.android.com/images/brand/en_generic_rgb_wo_60.png)](http://play.google.com/store/apps/details?id=de.keyboardsurfer.app.demo.crouton)
-
 ## Quick Start
 
 ### Installation [![gitTio](http://gitt.io/badge.png)](http://gitt.io/component/de.manumaticx.crouton)
@@ -53,6 +49,7 @@ There are some more examples in the [example](example/app.js).
 * __options__: Object
 	* text
 	* style
+	* color
 	* duration (as ms)
 	* activity
 
@@ -66,6 +63,7 @@ There are some more examples in the [example](example/app.js).
 * __options__: Object
 	* text
 	* style
+	* color
 	* duration (as ms)
 	* activity
 
