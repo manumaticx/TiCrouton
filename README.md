@@ -1,5 +1,8 @@
 # TiCrouton [![Titanium](http://www-static.appcelerator.com/badges/titanium-git-badge-sq.png)](http://www.appcelerator.com/titanium/)
 
+## IMPORTANT
+[Crouton](https://github.com/keyboardsurfer/Crouton) was marked as *DEPRECATED*. Since this module is based on that library I'll stop further development.
+
 ## About
 TiCrouton is a Titanium module for [Crouton](https://github.com/keyboardsurfer/Crouton) - a replacement for Android Toast notifications.
 
