@@ -10,3 +10,5 @@ node_modules
 .project
 .settings
 .apt_generated
+
+.DS_Store

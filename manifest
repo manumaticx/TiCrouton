@@ -2,14 +2,14 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.2.6
-apiversion: 2
+version: 2.0.0
+apiversion: 3
 description: Context sensitive notifications for Android
 author: Manuel Lehner
 license: MIT
 copyright: 2014, Manuel Lehner
 
-architectures: armeabi armeabi-v7a x86 x86_64
+architectures: armeabi-v7a x86 x86_64
 
 
 # these should not be edited
@@ -17,4 +17,4 @@ name: TiCrouton
 moduleid: de.manumaticx.crouton
 guid: b4a7b514-5259-40e6-80d5-c57fa3987975
 platform: android
-minsdk: 5.1.1.GA
+minsdk: 6.0.0.v20161017194738
